@@ -2158,8 +2158,10 @@ function init(){
     }
   }
   var describe = "icons/describe.png";
+  var english = "icons/english.png";
   $("body").insertAdjacentHTML('beforeend', '<img id="' + tag[0] + '" style="position:absolute; left:' + (pst[0] * ihw) + 'px; top:' + (pst[1] * ihw) + 'px;" src="' + img[0] + '" height="' + (ihw - 1) + 'px">\n');
   $("body").insertAdjacentHTML('beforeend', '<img style="position:absolute; left:' + (pst[0] * ihw) + 'px; top:' + ((pst[1] - 1) * ihw) + 'px;" src="' + describe + '" height="' + (ihw - 1) + 'px" onclick="ddescribe()">\n');
+  $("body").insertAdjacentHTML('beforeend', '<a href="' + location.href + '?lang=en"><img style="position:absolute; left:' + ((pst[0] - 1) * ihw) + 'px; top:' + ((pst[1] - 1) * ihw) + 'px;" src="' + english + '" height="' + (ihw - 1) + 'px"></a>\n');
   $(tag[0]).addEventListener("mousedown", dblclk, false);
   $(tag[0]).addEventListener("touchstart", dblclk, false);
   plc[pst[0]][pst[1]] = 0;
