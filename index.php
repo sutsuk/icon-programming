@@ -4,6 +4,14 @@
   }
 ?>
 <?php
+  if(!empty($_GET['lang'])){
+    if($_GET['lang'] == "en"){
+      include("en_index.php");
+      exit();
+    }
+  }
+?>
+<?php
   if(!empty($_POST['keep'])){
     chdir('keep');
     while(1){
