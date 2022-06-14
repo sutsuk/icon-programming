@@ -940,8 +940,8 @@ function optetr(dlg, typ, num){
       arg = "";
       for(i = 0; i < prt.length; i++){
         if(prt[i] == tag[2] || prt[i] == tag[3] || prt[i] == tag[4]){
-	  if($("funcf-arg-" + prn[i]).checked){
-	    if(arg == ""){
+          if($("funcf-arg-" + prn[i]).checked){
+            if(arg == ""){
               arg = prt[i] + '#' + prn[i];
             }else{
               arg = arg + ';' + prt[i] + '#' + prn[i];
@@ -2028,7 +2028,7 @@ function dcc(i, j, emd, ind){
       arg = "";
       for(k = 1; k < ps3.length; k++){
         if(ps3[k][0] == ""){
-	  arg = "";
+          arg = "";
         }else if(k > 1){
           if(ps3[k][0] == tag[4]){
             arg = arg + ", " + ps3[k][0] + " *" + ps3[k][1];
@@ -2096,12 +2096,18 @@ function setprm(name, value, type){
     $("math-param1").insertAdjacentHTML('beforeend', '<option value="' + name + '">' + name + '</option>');
     $("math-param2").insertAdjacentHTML('beforeend', '<option value="' + name + '">' + name + '</option>');
     $("math-param3").insertAdjacentHTML('beforeend', '<option value="' + name + '">' + name + '</option>');
+    $("funcf-arg").insertAdjacentHTML('beforeend', '<ul><li><input id="funcf-arg-' + tav + '" type="checkbox"></li><li><p>' + tav + '</p></ul>');
+    $("funcf-ret").insertAdjacentHTML('beforeend', '<option value="' + tav + '">' + tav + '</option>');
+    $("funce-ret").insertAdjacentHTML('beforeend', '<option value="' + tav + '">' + tav + '</option>');
   }else if(type == tag[4]){
     $("print-param").insertAdjacentHTML('beforeend', '<option value="' + name + '">' + name + '</option>');
     $("scan-param").insertAdjacentHTML('beforeend', '<option value="' + name + '">' + name + '</option>');
     $("if-param1").insertAdjacentHTML('beforeend', '<option value="' + name + '">' + name + '</option>');
     $("if-param2").insertAdjacentHTML('beforeend', '<option value="' + name + '">' + name + '</option>');
     $("subst-param").insertAdjacentHTML('beforeend', '<option value="' + name + '">' + name + '</option>');
+    $("funcf-arg").insertAdjacentHTML('beforeend', '<ul><li><input id="funcf-arg-' + tav + '" type="checkbox"></li><li><p>' + tav + '</p></ul>');
+    $("funcf-ret").insertAdjacentHTML('beforeend', '<option value="' + tav + '">' + tav + '</option>');
+    $("funce-ret").insertAdjacentHTML('beforeend', '<option value="' + tav + '">' + tav + '</option>');
   }
 } 
 
