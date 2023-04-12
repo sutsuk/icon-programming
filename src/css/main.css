@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+body {
+  margin: 5vw;
+  padding: 0px;
+  font-size: 15px;
+  background: ￼#ddeeff;
+}
+
+input {
+	height: 40px;
+}
+
+form {
+  background: ￼#aaffff;
+  padding: 20px;
+  border: 2px solid ￼#ffffaa;
+  border-radius: 30px;
+}
+
+input, select, button {
+  padding: 0px 0px 0px 2px;
+  width: 80vw;
+  height: 35px;
+}
+
+input[type="button"], button {
+  margin: 0px 1vw;
+}
+
+input[type="checkbox"] {
+  width: initial;
+  height: initial;
+}
+
+textarea {
+  padding: 4px;
+  width: 80vw;
+  height: 10vh;
+  resize: vertical;
+}
+
+.string {
+  white-space: pre-wrap;
+  overflow: overlay;
+}
+
+.left {
+  text-align: left;
+}
+
+.header {
+  margin: 10px 0px;
+  font-size: 18px;
+}
+
+.list > ul, ul.list {
+  display: block;
+  margin: 0px auto;
+  padding: 0px;
+  width: fit-content;
+}
+.list > ul > li, ul.list > li {
+  padding: 0px;
+  display: block;
+  text-align: center;
+}
+
+.row > ul, ul.row {
+  display: block;
+  margin: 0px auto;
+  padding: 0px;
+  width: fit-content;
+}
+.row > ul > li, ul.row > li {
+  padding: 0px;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.none {
+  display: none;
+}
+
+.abs {
+  position: absolute;
+}
+
+.vw80 { width: 80vw; }
+.vw70 { width: 70vw; }
+.vw65 { width: 65vw; }
+.vw60 { width: 60vw; }
+.vw55 { width: 55vw; }
+.vw50 { width: 50vw; }
+.vw45 { width: 45vw; }
+.vw40 { width: 40vw; }
+.vw35 { width: 35vw; }
+.vw30 { width: 30vw; }
+.vw25 { width: 25vw; }
+.vw20 { width: 20vw; }
+.vw15 { width: 15vw; }
+.vw10 { width: 10vw; }
+
