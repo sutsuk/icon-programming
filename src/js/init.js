@@ -77,3 +77,16 @@ function cpyObj(src){
   return Object.assign({}, JSON.parse(JSON.stringify(src)));
 }
 
+function msg(str){
+  $id("msg").innerHTML = str.replace(/\$\$/g, "\n");
+  if($id("dlg-msg").open == false){
+    $id("dlg-msg").showModal();
+  }
+}
+
+function msg_close(){
+  $id("dlg-msg").close();
+  NEXT();
+  NEXT = ()=>{};
+}
+
