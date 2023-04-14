@@ -73,3 +73,7 @@ function add_html(dom, text){
   dom.insertAdjacentHTML("beforeEnd", text);
 }
 
+function cpyObj(src){
+  return Object.assign({}, JSON.parse(JSON.stringify(src)));
+}
+
