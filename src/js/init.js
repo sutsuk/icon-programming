@@ -164,3 +164,75 @@ function isNumType(type){
   return 0;
 }
 
+function Initial(){
+  var x, y, wdt, hgt;
+  var p = 0;
+  var BG = $id("background");
+  var body = $id("body");
+  if(GET("lang") == null){
+    lang = "jp";
+  }else{
+    lang = GET("lang");
+  }
+  if(typeof LoadData === "function"){
+    LoadData();
+  }
+  set_icons();
+  set_text();
+  for(var i = 0; i < def_table.hgt; i++){
+    data.table.push(new Array());
+    hgt = i * def_icon.hgt;
+    for(var j = 0; j < def_table.wdt; j++){
+      wdt = j * def_icon.wdt;
+      add_html(BG, make_html_img(_, _, def_icon.bg, def_icon.hgt, new Loc(wdt, hgt)));
+      data.table[i].push(-1);
+    }
+  }
+  for(var i = 0; i < def_icon.icons.length; i++){
+    if(def_icon.icons[i].tag == "start"){
+      data.table[def_icon.start.y][def_icon.start.x] = def_icon.icons.length;
+      x = def_icon.start.x;
+      y = def_icon.start.y;
+      data.table[y][x] = data.icons.length;
+      target.icon = def_icon.icons[i];
+      target.type = target.icon.tag;
+      data.icons.push(new Icon(target.type, $id("img"+i), x, y, new Attr()));
+      x *= def_icon.wdt;
+      y *= def_icon.hgt;
+      add_html(body, make_html_img("img"+i, _, target.icon.src, def_icon.hgt, new Loc(y, x)));
+      $id("img"+i).addEventListener("click", view_attr_start);
+      continue;
+    }
+    if(def_icon.icons[i].tag == "funct") continue;
+    if(def_icon.icons[i].tag == "funce") continue;
+    x = parseInt(p / def_icon.rows);
+    y = (p++ % def_icon.rows);
+    data.table[y][x] = def_icon.icons.length;
+    x *= def_icon.wdt;
+    y *= def_icon.hgt;
+    add_html(body, make_html_img("img"+i, _, def_icon.icons[i].src, def_icon.hgt, new Loc(y, x)));
+    $id("img"+i).setAttribute("onclick", "icon_summon("+i+", -1, -1, new Attr())");
+  }
+  $id("msg-close").addEventListener("click", msg_close);
+  target.DOM = $cl("dlg-close");
+  for(var i = 0; i < (target.DOM).length; i++){
+    target.DOM[i].setAttribute("onclick", "events.close()");
+  }
+  target.DOM = $cl("text-close");
+  for(var i = 0; i < (target.DOM).length; i++){
+    target.DOM[i].setAttribute("onclick", "events.close()");
+  }
+  target.DOM = $cl("text-ok");
+  for(var i = 0; i < (target.DOM).length; i++){
+    target.DOM[i].setAttribute("onclick", "events.ok()");
+  }
+  target.DOM = $cl("text-cancel");
+  for(var i = 0; i < (target.DOM).length; i++){
+    target.DOM[i].setAttribute("onclick", "events.cancel()");
+  }
+  document.body.addEventListener("mousemove", icon_move);
+  document.body.addEventListener("touchmove", icon_move);
+  document.body.addEventListener("mouseleave", icon_release);
+  document.body.addEventListener("touchleave", icon_release);
+}
+
