@@ -119,3 +119,15 @@ function set_icons(){
   def_icon.bg = "icons/" + lang + "/background.png";
 }
 
+function Num(val){
+  return parseFloat(val);
+}
+
+function Cast(val, type){
+  switch(type){
+    case "int":    return parseInt(val);
+    case "double": return parseFloat(val);
+  }
+  return String(val);
+}
+
