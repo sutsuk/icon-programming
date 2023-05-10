@@ -101,3 +101,23 @@ function icon_release(){
   }
 }
 
+function icon_set(){
+  console.log("[CALL] icon_set()");
+  data.icons[target.icon].x = target.x;
+  data.icons[target.icon].y = target.y;
+  data.table[target.y][target.x] = target.icon;
+  events.DOM.style.left = (target.x * def_icon.wdt) + "px";
+  events.DOM.style.top = (target.y * def_icon.hgt) + "px";
+  events.DOM = null;
+}
+
+function icon_reset(){
+  console.log("[CALL] icon_reset()");
+  msg(text.reset);
+  data.icons[target.icon].x = -1;
+  data.icons[target.icon].y = -1;
+  events.DOM.style.left = def_icon.x + "px";
+  events.DOM.style.top = def_icon.y + "px";
+  events.DOM = null;
+}
+
