@@ -90,3 +90,32 @@ function msg_close(){
   NEXT = ()=>{};
 }
 
+function set_icons(){
+  console.log("[CALL] set_icons()");
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/start.png", "start"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/end.png", "end"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/int.png", "int"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/double.png", "double"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/char.png", "char"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/print.png", "print"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/scan.png", "scan"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/if_1.png", "if_1"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/if_2.png", "if_2"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/up.png", "up"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/down.png", "down"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/rightup.png", "rightup"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/rightdown.png", "rightdown"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/right.png", "right"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/conf_1.png", "conf_1"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/conf_2.png", "conf_2"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/subst.png", "subst"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/loop_start.png", "loopstart"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/loop_break.png", "loopbreak"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/loop_end.png", "loopend"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/math.png", "math"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/funcf.png", "funcf"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/funct.png", "funct"));
+  (def_icon.icons).push(new DefIcon("icons/" + lang + "/funce.png", "funce"));
+  def_icon.bg = "icons/" + lang + "/background.png";
+}
+
