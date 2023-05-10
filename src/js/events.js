@@ -47,3 +47,15 @@ function icon_hold(event){
   }
 }
 
+function icon_move(event){
+  if(events.DOM != null){
+    // console.log("[CALL] icon_move()");
+    event.preventDefault();
+    if(event.type == "touchmove"){
+      event = event.changedTouches[0];
+    }
+    (events.DOM).style.left = (event.pageX - target.x) + "px";
+    (events.DOM).style.top = (event.pageY - target.y) + "px";
+  }
+}
+
