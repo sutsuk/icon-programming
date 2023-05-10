@@ -119,3 +119,47 @@ function math_change(phase, op=""){
   }
 }
 
+function input_attr(icon){
+  console.log("[CALL] input_attr()");
+  target.icon = icon;
+  target.type = (data.icons[target.icon].type).split("_")[0];
+  target.attr = cpyObj(data.icons[target.icon].attr);
+  switch(target.type){
+    case "start":     view_attr_start();           return;
+    case "end":       view_attr_vain(target.type); return;
+    case "up":        view_attr_vain(target.type); return;
+    case "down":      view_attr_vain(target.type); return;
+    case "rightup":   view_attr_vain(target.type); return;
+    case "rightdown": view_attr_vain(target.type); return;
+    case "right":     view_attr_vain(target.type); return;
+    case "conf":      view_attr_vain(target.type); return;
+  }
+  if(target.attr.name != ""){
+    switch(target.type){
+      case "int":       view_attr_int();       return;
+      case "double":    view_attr_double();    return;
+      case "char":      view_attr_char();      return;
+      case "print":     view_attr_print();     return;
+      case "scan":      view_attr_scan();      return;
+      case "if":        view_attr_if();        return;
+      case "subst":     view_attr_subst();     return;
+      case "loopstart": view_attr_loopstart(); return;
+      case "loopbreak": view_attr_loopbreak(); return;
+      case "loopend":   view_attr_loopend();   return;
+      case "math":      view_attr_math();      return;
+      case "funcf":     view_attr_funcf();     return;
+      case "funct":     view_attr_funct();     return;
+      case "funce":     view_attr_funce();     return;
+    }
+  }
+  init_input_attr(target.type);
+  events.ok = ()=>{
+    $id("dlg-" + target.type).close();
+    set_attr();
+  };
+  events.cancel = ()=>{
+    $id("dlg-" + target.type).close();
+  };
+  $id("dlg-" + target.type).showModal();
+}
+
