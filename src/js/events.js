@@ -59,3 +59,45 @@ function icon_move(event){
   }
 }
 
+function icon_release(){
+  if(events.DOM != null){
+    console.log("[CALL] icon_release()");
+    target.icon = (events.DOM.id).split('-')[1];
+    target.left = parseInt(events.DOM.style.left);
+    target.top = parseInt(events.DOM.style.top);
+    if((target.left % def_icon.wdt) <= (def_icon.wdt / 2)){
+      data.icons[target.icon].x = parseInt(target.left / def_icon.wdt);
+    }else{
+      data.icons[target.icon].x = parseInt(target.left / def_icon.wdt) + 1;
+    }
+    if((target.top % def_icon.hgt) <= (def_icon.hgt / 2)){
+      data.icons[target.icon].y = parseInt(target.top / def_icon.hgt);
+    }else{
+      data.icons[target.icon].y = parseInt(target.top / def_icon.hgt) + 1;
+    }
+    if(data.icons[target.icon].x < 0) data.icons[target.icon].x = 0;
+    if(data.icons[target.icon].y < 0) data.icons[target.icon].y = 0;
+    target.x = data.icons[target.icon].x;
+    target.y = data.icons[target.icon].y;
+    if(data.table[target.y][target.x] >= 0){
+      for(var i = -1; i <= 1; i++){
+        target.y = data.icons[target.icon].y + i;
+        if(target.y < 0) continue;
+        if(target.y >= def_table.hgt) break;
+        for(var j = -1; j <= 1; j++){
+          target.x = data.icons[target.icon].x + j;
+          if(target.x < 0) continue;
+          if(target.x >= def_table.wdt) break;
+          if(data.table[target.y][target.x] < 0){
+            icon_set();
+            return;
+          }
+        }
+      }
+      icon_reset();
+      return;
+    }
+    icon_set();
+  }
+}
+
