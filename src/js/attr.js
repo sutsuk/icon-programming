@@ -163,3 +163,318 @@ function input_attr(icon){
   $id("dlg-" + target.type).showModal();
 }
 
+function view_attr_start(){
+  console.log("[CALL] view_attr_start()");
+  var header = $id("view-header");
+  var body = $id("view-body");
+  header.innerHTML = target.type;
+  body.innerHTML = "";
+  add_html(body, make_html_button(text.exec, "start-exec"));
+  add_html(body, make_html_button(text.gen_c, "start-gen_c"));
+  $id("start-exec").setAttribute("onclick", 'exec_run()');
+  $id("start-gen_c").setAttribute("onclick", 'gen_c()');
+  events.close = ()=>{
+    $id("dlg-view").close();
+  };
+  $id("dlg-view").showModal();
+}
+
+function view_attr_int(){
+  console.log("[CALL] view_attr_int()");
+  var header = $id("view-header");
+  var body = $id("view-body");
+  var temp_html = new Array();
+  header.innerHTML = target.type;
+  body.innerHTML = "";
+  temp_html.push(make_html_text(target.attr.name, _, true));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.name));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  events.close = ()=>{
+    $id("dlg-view").close();
+  };
+  $id("dlg-view").showModal();
+}
+
+function view_attr_double(){
+  console.log("[CALL] view_attr_double()");
+  var header = $id("view-header");
+  var body = $id("view-body");
+  var temp_html = new Array();
+  header.innerHTML = target.type;
+  body.innerHTML = "";
+  temp_html.push(make_html_text(target.attr.name, _, true));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.name));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  events.close = ()=>{
+    $id("dlg-view").close();
+  };
+  $id("dlg-view").showModal();
+}
+
+function view_attr_char(){
+  console.log("[CALL] view_attr_char()");
+  var header = $id("view-header");
+  var body = $id("view-body");
+  var temp_html = new Array();
+  header.innerHTML = target.type;
+  body.innerHTML = "";
+  temp_html.push(make_html_text(target.attr.name, _, true));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.name));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  events.close = ()=>{
+    $id("dlg-view").close();
+  };
+  $id("dlg-view").showModal();
+}
+
+function view_attr_print(){
+  console.log("[CALL] view_attr_print()");
+  var header = $id("view-header");
+  var body = $id("view-body");
+  var temp_html = new Array();
+  header.innerHTML = target.type;
+  body.innerHTML = "";
+  temp_html.push(make_html_text(target.attr.val.v1, _, true));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.name));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  events.close = ()=>{
+    $id("dlg-view").close();
+  };
+  $id("dlg-view").showModal();
+}
+
+function view_attr_scan(){
+  console.log("[CALL] view_attr_scan()");
+  var header = $id("view-header");
+  var body = $id("view-body");
+  var temp_html = new Array();
+  header.innerHTML = target.type;
+  body.innerHTML = "";
+  temp_html.push(make_html_text(target.attr.name, _, true));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.name));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  events.close = ()=>{
+    $id("dlg-view").close();
+  };
+  $id("dlg-view").showModal();
+}
+
+function view_attr_if(){
+  console.log("[CALL] view_attr_if()");
+  var header = $id("view-header");
+  var body = $id("view-body");
+  var temp_html = new Array();
+  header.innerHTML = target.type;
+  body.innerHTML = "";
+  if(target.attr.val.v1 == "true" || target.attr.val.v1 == "false"){
+    temp_html.push(make_html_text(target.attr.val.v1, _, true));
+  }else{
+    temp_html.push(make_html_text(target.attr.val.v1+" == "+target.attr.val.v2, _, true));
+  }
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.comp));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  events.close = ()=>{
+    $id("dlg-view").close();
+  };
+  $id("dlg-view").showModal();
+}
+
+function view_attr_subst(){
+  console.log("[CALL] view_attr_subst()");
+  var header = $id("view-header");
+  var body = $id("view-body");
+  var temp_html = new Array();
+  header.innerHTML = target.type;
+  body.innerHTML = "";
+  temp_html.push(make_html_text(target.attr.name, _, true));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.varname));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  temp_html.push(make_html_text(target.attr.val.v1, _, true));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.value));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  events.close = ()=>{
+    $id("dlg-view").close();
+  };
+  $id("dlg-view").showModal();
+}
+
+function view_attr_loopstart(){
+  console.log("[CALL] iew_attr_loopstart()");
+  var header = $id("view-header");
+  var body = $id("view-body");
+  var temp_html = new Array();
+  header.innerHTML = target.type;
+  body.innerHTML = "";
+  temp_html.push(make_html_text(target.attr.name, _, true));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.name));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  events.close = ()=>{
+    $id("dlg-view").close();
+  };
+  $id("dlg-view").showModal();
+}
+
+function view_attr_loopbreak(){
+  console.log("[CALL] view_attr_loopbreak()");
+  var header = $id("view-header");
+  var body = $id("view-body");
+  var temp_html = new Array();
+  header.innerHTML = target.type;
+  body.innerHTML = "";
+  temp_html.push(make_html_text(target.attr.name, _, true));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.name));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  events.close = ()=>{
+    $id("dlg-view").close();
+  };
+  $id("dlg-view").showModal();
+}
+
+function view_attr_loopend(){
+  console.log("[CALL] view_attr_loopend()");
+  var header = $id("view-header");
+  var body = $id("view-body");
+  var temp_html = new Array();
+  header.innerHTML = target.type;
+  body.innerHTML = "";
+  temp_html.push(make_html_text(target.attr.name, _, true));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.name));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  events.close = ()=>{
+    $id("dlg-view").close();
+  };
+  $id("dlg-view").showModal();
+}
+
+function view_attr_math(){
+  console.log("[CALL] view_attr_math()");
+  var header = $id("view-header");
+  var body = $id("view-body");
+  var temp_html = new Array();
+  header.innerHTML = target.type;
+  body.innerHTML = "";
+  temp_html.push(make_html_text(target.attr.val.v1, _, true));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.varname));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  temp_html.push(make_html_text(target.attr.val.v2, _, true));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.value+"1"));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  temp_html.push(make_html_text(target.attr.expr, _, true));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.expr));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  temp_html.push(make_html_text(target.attr.val.v3, _, true));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.value+"2"));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  events.close = ()=>{
+    $id("dlg-view").close();
+  };
+  $id("dlg-view").showModal();
+}
+
+function view_attr_funcf(){
+  console.log("[CALL] view_attr_funcf()");
+  var header = $id("view-header");
+  var body = $id("view-body");
+  var temp_html = new Array();
+  header.innerHTML = target.type;
+  body.innerHTML = "";
+  temp_html.push(make_html_text(target.attr.name, _, true));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.funcname));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  events.close = ()=>{
+    $id("dlg-view").close();
+  };
+  $id("dlg-view").showModal();
+}
+
+function view_attr_funct(){
+  console.log("[CALL] view_attr_funct()");
+  var header = $id("view-header");
+  var body = $id("view-body");
+  var temp_html = new Array();
+  header.innerHTML = target.type;
+  body.innerHTML = "";
+  temp_html.push(make_html_text(target.attr.name, _, true));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.funcname));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  events.close = ()=>{
+    $id("dlg-view").close();
+  };
+  $id("dlg-view").showModal();
+}
+
+function view_attr_funce(){
+  console.log("[CALL] view_attr_funce()");
+  var header = $id("view-header");
+  var body = $id("view-body");
+  var temp_html = new Array();
+  header.innerHTML = target.type;
+  body.innerHTML = "";
+  temp_html.push(make_html_text(target.attr.name, _, true));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_header(text.funcname));
+  temp_html.push(make_html_li(temp_html.pop()));
+  temp_html.push(make_html_ul(temp_html.pop()+temp_html.pop(), "row"));
+  add_html(body, temp_html.pop());
+  events.close = ()=>{
+    $id("dlg-view").close();
+  };
+  $id("dlg-view").showModal();
+}
+
+function view_attr_vain(){
+  console.log("[CALL] view_attr_vain()");
+  msg(text.vain);
+}
+
