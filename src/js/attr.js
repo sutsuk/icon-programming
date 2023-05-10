@@ -478,3 +478,55 @@ function view_attr_vain(){
   msg(text.vain);
 }
 
+function add_attr_numvar(name){
+  console.log("[CALL] add_attr_numvar()");
+  target.DOM = new Array();
+  target.DOM.push($id("print-param"));
+  target.DOM.push($id("scan-param"));
+  target.DOM.push($id("if-param1"));
+  target.DOM.push($id("if-param2"));
+  target.DOM.push($id("subst-param"));
+  target.DOM.push($id("math-param1"));
+  target.DOM.push($id("math-param2"));
+  target.DOM.push($id("math-param3"));
+  target.DOM.push($id("funcf-ret"));
+  target.DOM.push($id("funce-ret"));
+  for(var i = 0; i < target.DOM.length; i++){
+    add_html(target.DOM[i], make_html_option(name));
+  }
+  target.DOM = $id("funcf-arg");
+  add_html(target.DOM, make_html_check(name, "funcf-args")+name);
+}
+
+function add_attr_chrvar(name){
+  console.log("[CALL] add_attr_chrvar()");
+  target.DOM = new Array();
+  target.DOM.push($id("print-param"));
+  target.DOM.push($id("scan-param"));
+  target.DOM.push($id("if-param1"));
+  target.DOM.push($id("if-param2"));
+  target.DOM.push($id("subst-param"));
+  target.DOM.push($id("funcf-ret"));
+  target.DOM.push($id("funce-ret"));
+  for(var i = 0; i < target.DOM.length; i++){
+    add_html(target.DOM[i], make_html_option(name));
+  }
+  target.DOM = $id("funcf-arg");
+  add_html(target.DOM, make_html_check(name, "funcf-args")+name);
+}
+
+function add_attr_loop(name){
+  console.log("[CALL] add_attr_loop()");
+  target.DOM = new Array();
+  target.DOM.push($id("loopb-name"));
+  target.DOM.push($id("loope-name"));
+  for(var i = 0; i < target.DOM.length; i++){
+    add_html(target.DOM[i], make_html_option(name));
+  }
+}
+
+function add_attr_func(name, args, ret, begin){
+  console.log("[CALL] add_attr_func()");
+  data.funcs.push(new Func(name, args, ret, begin));
+}
+
