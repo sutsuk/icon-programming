@@ -131,3 +131,36 @@ function Cast(val, type){
   return String(val);
 }
 
+function isNum(val){
+  if(isInt(val) || isDouble(val)){
+    return 1;
+  }
+  return 0;
+}
+
+function isInt(val){
+  var val = String(val);
+  var match = val.match(/^[0-9]+/);
+  if(match && match[0] == val){
+    return 1;
+  }
+  return 0;
+}
+
+function isDouble(val){
+  var val = String(val);
+  var match = val.match(/^[1-9]+[.][0-9]+|^0[.][0-9]+/);
+  if(match && match[0] == val){
+    return 1;
+  }
+  return 0;
+}
+
+function isNumType(type){
+  switch(type){
+    case "int":    return 1;
+    case "double": return 1;
+  }
+  return 0;
+}
+
