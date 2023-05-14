@@ -113,3 +113,45 @@ function gen_c_scan(){
   gen.x += 1;
 }
 
+function gen_c_if(){
+  console.log("[CALL] gen_c_if()");
+  target.id = [target.id, -1, -1];
+  gen.ifs.push(new If(gen.x, gen.y));
+  if(target.attr.val.t1 == "var"){
+    target.id[1] = gen_search_var(target.attr.val.v1, _, gen.scope);
+    if(target.id[1] < 0){
+      gen_error(text.wrongscope);
+      return;
+    }
+    target.name = [data.vars[target.id[1]].name, ""]
+    if(target.attr.val.t2 == "var"){
+      target.id[2] = gen_search_var(target.attr.val.v2, _, gen.scope);
+      if(target.id[2] < 0){
+        gen_error(text.wrongscope);
+        return;
+      }
+      target.name[1] = data.vars[target.id[2]].name
+      gen_code('if('+target.name[0]+' == '+target.name[1]+'){', true, _);
+    }else{
+      if(isNumType(data.vars[target.id[1]].type)){
+        gen_code('if('+target.name[0]+' == '+target.attr.val.v2+'){', true, _);
+      }else{
+        gen_code('if(strcmp('+target.name[0]+', "'+target.attr.val.v2+'") == 0){', true, _);
+      }
+    }
+  }else{
+    if(target.attr.val.v1 == "false"){
+      gen_code('if(0){', true, _);
+    }else{
+      gen_code('if(1){', true, _);
+    }
+  }
+  if(gen.ifs[gen.ifs.length - 1].skip){
+    gen.x += 1;
+  }else if(target.id[0] == "1"){
+    gen.y += 1;
+  }else{
+    gen.y -= 1;
+  }
+}
+
