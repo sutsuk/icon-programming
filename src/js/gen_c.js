@@ -222,3 +222,23 @@ function gen_c_loopstart(){
   gen.x += 1;
 }
 
+function gen_c_loopbreak(){
+  console.log("[CALL] gen_c_loopbreak()");
+  target.id = [gen_search_loop(target.attr.name, gen.scope), -1];
+  if(target.id[0] < 0){
+    gen_error(text.wrongscope);
+    return;
+  }
+  for(var i = 0; i < gen.loops.length; i++){
+    target.id[1] = gen.loops.pop();
+    gen_code(data.loops[target.id[1]].name+' = 0;');
+    if(target.id[1] == target.id){
+      break;
+    }else if(i == gen.loops.length - 1){
+      gen_error(text.noloopend);
+      return;
+    }
+  }
+  gen.x += 1;
+}
+
