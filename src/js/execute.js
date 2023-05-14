@@ -135,3 +135,8 @@ function exec_error(err_msg=""){
   exec.run = 0;
 }
 
+function exec_start(){
+  console.log("[CALL] exec_start()");
+  exec.x[exec.nest] += 1;
+}
+
