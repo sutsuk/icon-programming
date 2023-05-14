@@ -136,3 +136,18 @@ function gen_error(err_msg=""){
   gen.run = 0;
 }
 
+function gen_code(code="", indent_inc=false, indent_dec=false){
+  console.log("[CALL] gen_code()");
+  console.log("[CODEGEN] "+code);
+  if(indent_dec){
+    gen.indent -= 1;
+  }
+  for(var i = 0; i < gen.indent; i++){
+    code = gen.tab+code;
+  }
+  add_html($id("gen-code"), code+"\n");
+  if(indent_inc){
+    gen.indent += 1;
+  }
+}
+
