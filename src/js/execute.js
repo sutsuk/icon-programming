@@ -330,3 +330,53 @@ function exec_loopend(){
   }
 }
 
+function exec_math(){
+  console.log("[CALL] exec_math()");
+  if(target.attr.val.t2 == "var"){
+    target.id = exec_search_var(target.attr.val.v2, _, exec.scope[exec.nest]);
+    if(target.id < 0){
+      exec_error(text.wrongscope);
+      return;
+    }
+    if(!isNumType(data.vars[target.id].type)){
+      exec_error(text.difftype);
+      return;
+    }
+    target.attr.val.v2 = data.vars[target.id].value;
+  }
+  if(target.attr.val.t3 == "var"){
+    target.id = exec_search_var(target.attr.val.v3, _, exec.scope[exec.nest]);
+    if(target.id < 0){
+      exec_error(text.wrongscope);
+      return;
+    }
+    if(!isNumType(data.vars[target.id].type)){
+      exec_error(text.difftype);
+      return;
+    }
+    target.attr.val.v3 = data.vars[target.id].value;
+  }
+  if(!isNum(target.attr.val.v2) || !isNum(target.attr.val.v3)){
+    exec_error(text.difftype);
+    return;
+  }
+  target.id = exec_search_var(target.attr.val.v1, _, exec.scope[exec.nest]);
+  if(target.id < 0){
+    exec_error(text.wrongscope);
+    return;
+  }
+  target.type = data.vars[target.id].type;
+  target.attr.val.v2 = Cast(target.attr.val.v2, target.type);
+  target.attr.val.v3 = Cast(target.attr.val.v3, target.type); 
+  if(target.attr.expr == "plus"){ 
+    data.vars[target.id].value = target.attr.val.v2 + target.attr.val.v3;
+  }else if(target.attr.expr == "minus"){
+    data.vars[target.id].value = target.attr.val.v2 - target.attr.val.v3;
+  }else if(target.attr.expr == "times"){
+    data.vars[target.id].value = target.attr.val.v2 * target.attr.val.v3;
+  }else{
+    data.vars[target.id].value = target.attr.val.v2 / target.attr.val.v3;
+  }
+  exec.x[exec.nest] += 1;
+}
+
