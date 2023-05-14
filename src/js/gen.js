@@ -102,3 +102,14 @@ function gen_search_var(name="any", type="any", scope="any"){
   return -1;
 }
 
+function gen_search_loop(name, scope){
+  console.log("[CALL] gen_search_loop()");
+  console.log("[SEARCH] "+"loop"+" "+name+" in "+scope);
+  for(var i = 0; i < data.loops.length; i++){
+    if(data.loops[i].name  != name)  continue;
+    if(data.loops[i].scope != scope) continue;
+    return i;
+  }
+  return -1;
+}
+
