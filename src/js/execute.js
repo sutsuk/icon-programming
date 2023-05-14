@@ -204,3 +204,36 @@ function exec_scan(){
   exec.x[exec.nest] += 1;
 }
 
+function exec_if(){
+  console.log("[CALL] exec_if()");
+  var id = target.id;
+  if(target.attr.val.t1 == "var"){
+    target.id = exec_search_var(target.attr.val.v1, _, exec.scope[exec.nest]);
+    if(target.id < 0){
+      exec_error(text.wrongscope);
+    }else{
+      target.attr.val.v1 = data.vars[target.id].value;
+      if(target.attr.val.t2 == "var"){
+        target.id = exec_search_var(target.attr.val.v2, _, exec.scope[exec.nest]);
+        if(target.id < 0){
+          exec_error(text.wrongscope);
+        }else{
+          target.attr.val.v2 = data.vars[target.id].value;
+        }
+      }
+    }
+    if(target.attr.val.v1 == target.attr.val.v2){
+      target.attr.val.v1 = "true";
+    }else{
+      target.attr.val.v1 = "false";
+    }
+  }
+  if(target.attr.val.v1 == "false"){
+    exec.x[exec.nest] += 1;
+  }else if(id == "1"){
+    exec.y[exec.nest] += 1;
+  }else{
+    exec.y[exec.nest] -= 1;
+  }
+}
+
