@@ -159,3 +159,10 @@ function exec_double(){
   exec.x[exec.nest] += 1;
 }
 
+function exec_char(){
+  console.log("[CALL] exec_char()");
+  target.name = data.icons[target.icon].attr.name;
+  exec_add_var(target.name, target.type, exec.scope[exec.nest]);
+  exec.x[exec.nest] += 1;
+}
+
