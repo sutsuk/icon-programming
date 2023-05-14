@@ -248,3 +248,58 @@ function gen_c_loopend(){
   gen.x += 1;
 }
 
+function gen_c_math(){
+  console.log("[CALL] gen_c_math()");
+  target.id = gen_search_var(target.attr.val.v1, _, gen.scope);
+  if(target.id < 0){
+    gen_error(text.wrongscope);
+    return;
+  }
+  target.type = data.vars[target.id].type;
+  if(target.attr.val.t2 == "var"){
+    target.id = gen_search_var(target.attr.val.v2, _, gen.scope);
+    if(target.id < 0){
+      gen_error(text.wrongscope);
+      return;
+    }
+    if(!isNumType(data.vars[target.id].type)){
+      gen_error(text.difftype);
+      return;
+    }
+  }else{
+    if(!isNum(target.attr.val.v2)){
+      gen_error(text.difftype);
+      return;
+    }
+    target.attr.val.v2 = Cast(target.attr.val.v2, target.type);
+  }
+  if(target.attr.val.t3 == "var"){
+    target.id = gen_search_var(target.attr.val.v3, _, gen.scope);
+    if(target.id < 0){
+      gen_error(text.wrongscope);
+      return;
+    }
+    if(!isNumType(data.vars[target.id].type)){
+      gen_error(text.difftype);
+      return;
+    }
+  }else{
+    if(!isNum(target.attr.val.v3)){
+      gen_error(text.difftype);
+      return;
+    }
+    target.attr.val.v3 = Cast(target.attr.val.v3, target.type);
+  }
+  target.type = data.vars[target.id].type;
+  if(target.attr.expr == "plus"){
+    gen_code(target.attr.val.v1+" = "+target.attr.val.v2+' + '+target.attr.val.v3+';');
+  }else if(target.attr.expr == "minus"){
+    gen_code(target.attr.val.v1+" = "+target.attr.val.v2+' - '+target.attr.val.v3+';');
+  }else if(target.attr.expr == "times"){
+    gen_code(target.attr.val.v1+" = "+target.attr.val.v2+' * '+target.attr.val.v3+';');
+  }else{
+    gen_code(target.attr.val.v1+" = "+target.attr.val.v2+' / '+target.attr.val.v3+';');
+  }
+  gen.x += 1;
+}
+
