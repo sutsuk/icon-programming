@@ -60,3 +60,11 @@ function gen_c_int(){
   gen.x += 1;
 }
 
+function gen_c_double(){
+  console.log("[CALL] gen_c_double()");
+  target.name = data.icons[target.icon].attr.name;
+  gen_add_var(target.name, target.type, gen.scope);
+  gen_code("double "+target.name+";");
+  gen.x += 1;
+}
+
