@@ -242,3 +242,8 @@ function exec_up(){
   exec.y[exec.nest] -= 1;
 }
 
+function exec_down(){
+  console.log("[CALL] exec_down()");
+  exec.y[exec.nest] += 1;
+}
+
