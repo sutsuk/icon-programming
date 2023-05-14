@@ -166,3 +166,21 @@ function exec_char(){
   exec.x[exec.nest] += 1;
 }
 
+function exec_print(){
+  console.log("[CALL] exec_print()");
+  target.DOM = $id("exec-output");
+  if(target.attr.val.t1 == "var"){
+    target.id = exec_search_var(target.attr.val.v1, _, exec.scope[exec.nest]);
+    if(target.id < 0){
+      exec_error(text.wrongscope);
+    }else{
+      target.DOM.innerHTML += data.vars[target.id].value+"\n";
+      console.log("[STDOUT] "+data.vars[target.id].value);
+    }
+  }else{
+    target.DOM.innerHTML += target.attr.val.v1+"\n";
+    console.log("[STDOUT] "+target.attr.val.v1);
+  }
+  exec.x[exec.nest] += 1;
+}
+
