@@ -160,3 +160,8 @@ function gen_c_up(){
   gen.y -= 1;
 }
 
+function gen_c_down(){
+  console.log("[CALL] gen_c_down()");
+  gen.y += 1;
+}
+
