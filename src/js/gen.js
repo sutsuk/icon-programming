@@ -76,3 +76,9 @@ function gen_add_var(name, type, scope){
   console.log("[NEWVAR] "+type+" "+name+" in "+scope);
 }
 
+function gen_add_loop(name, begin){
+  console.log("[CALL] gen_add_loop()");
+  data.loops.push(new Loop(name, gen.scope, begin));
+  console.log("[NEWLOOP] "+name+" at icons["+begin+"]")
+}
+
