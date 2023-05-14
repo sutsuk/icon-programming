@@ -425,3 +425,48 @@ function exec_funct(){
   exec.x[exec.nest] += 1;
 }
 
+function exec_funce(){
+  console.log("[CALL] exec_funce()");
+  if(target.attr.val.v2 != ""){
+    target.name = target.attr.val.v2;
+    target.id = exec_search_var(target.name, _, exec.scope[exec.nest]);
+    if(target.id < 0){
+      exec_error(text.wrongscope);
+      return;
+    }
+    target.attr.val.t1 = data.vars[target.id].type;
+    target.attr.val.v1 = data.vars[target.id].value;
+  }else{
+    target.attr.val.t1 = "";
+  }
+  exec.nest -= 1;
+  target.id = exec_search_func(target.attr.val.v3);
+  if(target.id < 0){
+    exec_error(text.nofunc);
+    return;
+  }
+  target.name = data.funcs[target.id].ret;
+  if(target.name != ""){
+    target.id = exec_search_var(target.name, _, exec.scope[exec.nest]);
+    if(target.id < 0){
+      exec_error(text.wrongscope);
+      return;
+    }
+    target.attr.val.t2 = data.vars[target.id].type;
+    target.attr.val.v2 = target.id;
+  }else{
+    target.attr.val.t2 = "";
+  }
+  if(target.attr.val.t1 != "" && target.attr.val.t2 != ""){
+    if(target.attr.val.t1 != target.attr.val.t2){
+      exec_error(text.difftype);
+      return;
+    }
+    data.vars[target.attr.val.v2].value = target.attr.val.v1;
+  }
+  exec.x.pop();
+  exec.y.pop();
+  exec.scope.pop();
+  exec.x[exec.nest] += 1;
+}
+
