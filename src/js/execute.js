@@ -152,3 +152,10 @@ function exec_int(){
   exec.x[exec.nest] += 1;
 }
 
+function exec_double(){
+  console.log("[CALL] exec_double()");
+  target.name = data.icons[target.icon].attr.name;
+  exec_add_var(target.name, target.type, exec.scope[exec.nest]);
+  exec.x[exec.nest] += 1;
+}
+
