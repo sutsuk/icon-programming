@@ -237,3 +237,8 @@ function exec_if(){
   }
 }
 
+function exec_up(){
+  console.log("[CALL] exec_up()");
+  exec.y[exec.nest] -= 1;
+}
+
