@@ -25,3 +25,12 @@ function gen_c(){
   gen_run();
 }
 
+function gen_c_start(){
+  console.log("[CALL] gen_c_start()");
+  gen_code("#include &lt;stdio.h&gt;");
+  gen_code("#include &lt;stdlib.h&gt;");
+  gen_code();
+  gen_code("int main(void){", true, _);
+  gen.x += 1; 
+}
+
