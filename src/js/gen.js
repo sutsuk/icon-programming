@@ -70,3 +70,9 @@ function gen_run(){
   }
 }
 
+function gen_add_var(name, type, scope){
+  console.log("[CALL] gen_add_var()");
+  data.vars.push(new Var(name, type, scope));
+  console.log("[NEWVAR] "+type+" "+name+" in "+scope);
+}
+
