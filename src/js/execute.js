@@ -145,3 +145,10 @@ function exec_end(){
   exec.run = 0;
 }
 
+function exec_int(){
+  console.log("[CALL] exec_int()");
+  target.name = data.icons[target.icon].attr.name;
+  exec_add_var(target.name, target.type, exec.scope[exec.nest]);
+  exec.x[exec.nest] += 1;
+}
+
