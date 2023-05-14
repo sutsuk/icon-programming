@@ -194,3 +194,22 @@ function gen_c_conf(){
   }
 }
 
+function gen_c_subst(){
+  console.log("[CALL] gen_c_subst()");
+  target.id = gen_search_var(target.attr.name, _, gen.scope);
+  if(target.id < 0){
+    gen_error(text.wrongscope);
+    return;
+  }
+  target.name = data.vars[target.id].name;
+  target.type = data.vars[target.id].type;
+  if(isNumType(target.type)){
+    if(!isNum(target.attr.val.v1)){
+      gen_error(text.difftype);
+      return;
+    }
+  }
+  gen_code(target.name+' = '+Cast(target.attr.val.v1, target.type)+';');
+  gen.x += 1;
+}
+
