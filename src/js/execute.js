@@ -292,4 +292,28 @@ function exec_loopstart(){
   exec.x[exec.nest] += 1;
 }
 
+function exec_loopbreak(){
+  console.log("[CALL] exec_loopbreak()");
+  target.id = exec_search_loop(target.attr.name, exec.scope[exec.nest]);
+  if(target.id < 0){
+    exec_error(text.wrongscope);
+  }else{
+    for(var i = 0; i < exec.loops.length; i++){
+      if(exec.loops.pop() == target.id){
+        break;
+      }else if(i == exec.loops.length - 1){
+        exec_error(text.noloopend);
+        return;
+      }
+    }
+  }
+  target.icon = data.loops[target.id].end;
+  if(target.icon < 0){
+    exec_error(text.noloopend);
+    return;
+  }else{
+    exec.x[exec.nest] = data.icons[target.icon].x + 1;
+    exec.y[exec.nest] = data.icons[target.icon].y;
+  }
+}
 
