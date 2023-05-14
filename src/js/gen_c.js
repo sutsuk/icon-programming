@@ -303,3 +303,46 @@ function gen_c_math(){
   gen.x += 1;
 }
 
+function gen_c_funcf(){
+  console.log("[CALL] gen_c_funcf()");
+  var code = "";
+  target.id = [gen_search_func(target.attr.name), -1];
+  if(target.id[0] < 0){
+    gen_error(text.nofunc);
+    return;
+  }
+  if(target.attr.val.v3 == ""){
+    target.type = "void";
+  }else{
+    target.id[1] = gen_search_var(target.attr.val.v3, _, gen.scope);
+    if(target.id[1] < 0){
+      gen_error(text.wrongscope);
+      return;
+    }
+    target.type = data.vars[target.id[1]].type;
+  }
+  gen_add_func(target.id[0], target.attr.name, target.type);
+  if(target.attr.val.v3 != ""){
+    code += target.attr.val.v3+" = ";
+  }
+  code += target.attr.name+"(";
+  for(var i = 0; i < gen.funcs[target.id[0]].args.length; i++){
+    if(i == 0){
+      code += gen.funcs[target.id[0]].args[i];
+    }else{
+      code += ", "+gen.funcs[target.id[0]].args[i];
+    }
+    target.id[1] = gen_search_var(gen.funcs[target.id[0]].args[i], _, gen.scope);
+    if(target.id[1] < 0){
+      gen_error(text.wrongscope);
+      return;
+    }
+    target.name = data.vars[target.id[1]].name;
+    target.type = data.vars[target.id[1]].type;
+    gen_add_var(target.name, target.type, target.attr.name);
+  }
+  code += ");";
+  gen_code(code);
+  gen.x += 1;
+}
+
