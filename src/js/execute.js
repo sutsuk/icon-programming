@@ -140,3 +140,8 @@ function exec_start(){
   exec.x[exec.nest] += 1;
 }
 
+function exec_end(){
+  console.log("[CALL] exec_end()");
+  exec.run = 0;
+}
+
