@@ -97,3 +97,19 @@ function gen_c_print(){
   gen.x += 1;
 }
 
+function gen_c_scan(){
+  console.log("[CALL] gen_c_scan()");
+  target.id = gen_search_var(target.attr.name, _, gen.scope);
+  if(target.id < 0){
+    gen_error(text.wrongscope);
+    return;
+  }
+  target.type = data.vars[target.id].type;
+  switch(target.type){
+    case "int":    gen_code('scan("%d", &'+target.name+');'); break;
+    case "double": gen_code('scan("%f", &'+target.name+');'); break;
+    case "char":   gen_code('scan("%s", '+target.name+');');  break;
+  }
+  gen.x += 1;
+}
+
