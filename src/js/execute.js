@@ -380,3 +380,43 @@ function exec_math(){
   exec.x[exec.nest] += 1;
 }
 
+function exec_funcf(){
+  console.log("[CALL] exec_funcf()");
+  target.id = [exec_search_func(target.attr.name), -1];
+  if(target.id[0] < 0){
+    exec_error(text.nofunc);
+    return;
+  }
+  if(target.attr.val.v3 == ""){
+    target.type = "void";
+  }else{
+    target.id[1] = exec_search_var(target.attr.val.v3, _, exec.scope[exec.nest]);
+    if(target.id[1] < 0){
+      exec_error(text.wrongscope);
+      return;
+    }
+    target.type = data.vars[target.id[1]].type;
+  }
+  exec_add_func(target.id[0], target.attr.name, target.type);
+  target.id = data.funcs[target.id[0]].begin;
+  if(target.id < 0){
+    exec_error(text.nofuncbegin);
+    return;
+  }
+  exec.x.push(data.icons[target.id].x);
+  exec.y.push(data.icons[target.id].y);
+  for(var i = 0; i < target.attr.val.v2.length; i++){
+    target.id = exec_search_var(target.attr.val.v2[i], _, exec.scope[exec.nest]);
+    if(target.id < 0){
+      exec_error(text.wrongscope);
+      return;
+    }
+    target.name = data.vars[target.id].name;
+    target.type = data.vars[target.id].type;
+    exec_add_var(target.name, target.type, target.attr.name);
+    data.vars[data.vars.length - 1].value = data.vars[target.id].value;
+  }
+  exec.nest += 1;
+  exec.scope.push(target.attr.name);
+}
+
