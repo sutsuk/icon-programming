@@ -180,3 +180,17 @@ function gen_c_right(){
   gen.x += 1;
 }
 
+function gen_c_conf(){
+  console.log("[CALL] gen_c_conf()");
+  if(gen.ifs[gen.ifs.length - 1].skip){
+    gen.ifs.pop();
+    gen_code('}', _, true);
+    gen.x += 1;
+  }else{
+    gen_code('}else{', true, true);
+    gen.ifs[gen.ifs.length - 1].skip = 1;
+    gen.x = gen.ifs[gen.ifs.length - 1].x + 1;
+    gen.y = gen.ifs[gen.ifs.length - 1].y;
+  }
+}
+
