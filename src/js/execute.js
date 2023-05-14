@@ -317,3 +317,16 @@ function exec_loopbreak(){
   }
 }
 
+function exec_loopend(){
+  console.log("[CALL] exec_loopend()");
+  target.id = exec_search_loop(target.attr.name, exec.scope[exec.nest]);
+  if(target.id < 0){
+    exec_error(text.wrongscope);
+  }else{
+    data.loops[target.id].end = target.icon;
+    target.icon = data.loops[target.id].begin;
+    exec.x[exec.nest] = data.icons[target.icon].x + 1;
+    exec.y[exec.nest] = data.icons[target.icon].y;
+  }
+}
+
