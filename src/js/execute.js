@@ -89,3 +89,15 @@ function exec_add_func(id, name, type){
   console.log("[NEWFUNC] "+type+" "+name+"()");
 }
 
+function exec_search_var(name, type="any", scope="any"){
+  console.log("[CALL] exec_search_var()");
+  console.log("[SEARCH] "+type+" "+name+" in "+scope);
+  for(var i = 0; i < data.vars.length; i++){
+    if(name  != "any" && data.vars[i].name  != name)  continue;
+    if(type  != "any" && data.vars[i].type  != type)  continue;
+    if(scope != "any" && data.vars[i].scope != scope) continue;
+    return i;
+  }
+  return -1;
+}
+
