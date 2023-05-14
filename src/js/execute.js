@@ -257,3 +257,8 @@ function exec_rightdown(){
   exec.x[exec.nest] += 1;
 }
 
+function exec_right(){
+  console.log("[CALL] exec_right()");
+  exec.x[exec.nest] += 1;
+}
+
