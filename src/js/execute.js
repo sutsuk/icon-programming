@@ -75,3 +75,9 @@ function exec_add_var(name, type, scope){
   console.log("[NEWVAR] "+type+" "+name+" in "+scope);
 }
 
+function exec_add_loop(name, begin){
+  console.log("[CALL] exec_add_loop()");
+  data.loops.push(new Loop(name, exec.scope[exec.nest], begin));
+  console.log("[NEWLOOP] "+name+" at icons["+begin+"]")
+}
+
