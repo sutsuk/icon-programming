@@ -175,3 +175,8 @@ function gen_c_rightdown(){
   gen.x += 1;
 }
 
+function gen_c_right(){
+  console.log("[CALL] gen_c_right()");
+  gen.x += 1;
+}
+
