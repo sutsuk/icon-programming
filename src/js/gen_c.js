@@ -76,3 +76,24 @@ function gen_c_char(){
   gen.x += 1;
 }
 
+function gen_c_print(){
+  console.log("[CALL] gen_c_print)");
+  if(target.attr.val.t1 == "var"){
+    target.id = gen_search_var(target.attr.val.v1, _, gen.scope);
+    if(target.id < 0){
+      gen_error(text.wrongscope);
+      return;
+    }
+    target.type = data.vars[target.id].type;
+    target.name = data.vars[target.id].name;
+    switch(target.type){
+      case "int":    gen_code('printf("%d\\n", '+target.name+');'); break;
+      case "double": gen_code('printf("%f\\n", '+target.name+');'); break;
+      case "char":   gen_code('printf("%s\\n", '+target.name+');'); break;
+    }
+  }else{
+    gen_code('printf("'+target.attr.val.v1+'\\n");');
+  }
+  gen.x += 1;
+}
+
