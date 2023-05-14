@@ -420,3 +420,8 @@ function exec_funcf(){
   exec.scope.push(target.attr.name);
 }
 
+function exec_funct(){
+  console.log("[CALL] exec_funct()");
+  exec.x[exec.nest] += 1;
+}
+
