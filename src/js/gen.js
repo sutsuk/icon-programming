@@ -113,3 +113,13 @@ function gen_search_loop(name, scope){
   return -1;
 }
 
+function gen_search_func(name){
+  console.log("[CALL] gen_search_func()");
+  console.log("[SEARCH] "+"func"+" "+name);
+  for(var i = 0; i < data.funcs.length; i++){
+    if(data.funcs[i].name != name) continue;
+    return i;
+  }
+  return -1;
+}
+
