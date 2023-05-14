@@ -262,3 +262,8 @@ function exec_right(){
   exec.x[exec.nest] += 1;
 }
 
+function exec_conf(){
+  console.log("[CALL] exec_conf()");
+  exec.x[exec.nest] += 1;
+}
+
