@@ -155,3 +155,8 @@ function gen_c_if(){
   }
 }
 
+function gen_c_up(){
+  console.log("[CALL] gen_c_up()");
+  gen.y -= 1;
+}
+
