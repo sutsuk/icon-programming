@@ -170,3 +170,8 @@ function gen_c_rightup(){
   gen.y -= 1;
 }
 
+function gen_c_rightdown(){
+  console.log("[CALL] gen_c_rightdown()");
+  gen.x += 1;
+}
+
