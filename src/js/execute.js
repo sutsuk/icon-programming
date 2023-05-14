@@ -101,3 +101,14 @@ function exec_search_var(name, type="any", scope="any"){
   return -1;
 }
 
+function exec_search_loop(name, scope){
+  console.log("[CALL] exec_search_loop()");
+  console.log("[SEARCH] "+"loop"+" "+name+" in "+scope);
+  for(var i = 0; i < data.loops.length; i++){
+    if(data.loops[i].name  != name)  continue;
+    if(data.loops[i].scope != scope) continue;
+    return i;
+  }
+  return -1;
+}
+
