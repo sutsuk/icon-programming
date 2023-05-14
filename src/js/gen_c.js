@@ -213,3 +213,12 @@ function gen_c_subst(){
   gen.x += 1;
 }
 
+function gen_c_loopstart(){
+  console.log("[CALL] gen_c_loopstart()");
+  gen_add_loop(target.attr.name, target.icon);
+  gen.loops.push(gen_search_loop(target.attr.name, gen.scope));
+  gen_code('int '+target.attr.name+' = 1;');
+  gen_code('while('+target.attr.name+'){', true, _); 
+  gen.x += 1;
+}
+
