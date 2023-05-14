@@ -184,3 +184,23 @@ function exec_print(){
   exec.x[exec.nest] += 1;
 }
 
+function exec_scan(){
+  console.log("[CALL] exec_scan()");
+  target.id = exec_search_var(target.attr.name, _, exec.scope[exec.nest]);
+  if(target.id < 0){
+    exec_error(text.wrongscope);
+    return;
+  }
+  data.vars[target.id].value = prompt(text.scan);
+  console.log("[STDIN] "+data.vars[target.id].value);
+  target.type = data.vars[target.id].type;
+  if(isNumType(target.type)){
+    if(!isNum(data.vars[target.id].value)){
+      exec_error(text.difftype);
+      return;
+    }
+  }
+  data.vars[target.id].value = Cast(data.vars[target.id].value, target.type);
+  exec.x[exec.nest] += 1;
+}
+
