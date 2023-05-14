@@ -346,3 +346,21 @@ function gen_c_funcf(){
   gen.x += 1;
 }
 
+function gen_c_funct(){
+  console.log("[CALL] gen_c_funct()");
+  var code = "";
+  code += gen.func.type+" ";
+  code += gen.func.name+"(";
+  for(var i = 0; i < gen.func.args.length; i++){
+    if(i == 0){
+      code += gen.func.args[i];
+    }else{
+      code += ", "+gen.func.args[i];
+    }
+  }
+  code += "){";
+  gen_code(code, true, _);
+  gen.scope = gen.func.name;
+  gen.x += 1;
+}
+
