@@ -247,3 +247,8 @@ function exec_down(){
   exec.y[exec.nest] += 1;
 }
 
+function exec_rightup(){
+  console.log("[CALL] exec_rightup()");
+  exec.y[exec.nest] -= 1;
+}
+
