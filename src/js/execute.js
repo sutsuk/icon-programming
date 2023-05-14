@@ -285,3 +285,11 @@ function exec_subst(){
   exec.x[exec.nest] += 1;
 }
 
+function exec_loopstart(){
+  console.log("[CALL] exec_loopstart()");
+  exec_add_loop(target.attr.name, target.icon);
+  exec.loops.push(exec_search_loop(target.attr.name, exec.scope[exec.nest]));
+  exec.x[exec.nest] += 1;
+}
+
+
