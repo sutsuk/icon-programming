@@ -123,3 +123,16 @@ function gen_search_func(name){
   return -1;
 }
 
+function gen_error(err_msg=""){
+  console.log("[CALL] gen_error()");
+  if(err_msg == ""){
+    msg("["+gen.y+"]["+gen.x+"]"+text.unknown);
+    console.log("[ERROR] "+text.unknown);
+  }else{
+    msg("["+gen.y+"]["+gen.x+"]"+err_msg);
+    console.log("[ERROR] "+err_msg);
+  }
+  gen.error = 1;
+  gen.run = 0;
+}
+
