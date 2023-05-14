@@ -34,3 +34,21 @@ function gen_c_start(){
   gen.x += 1; 
 }
 
+function gen_c_end(){
+  console.log("[CALL] gen_c_end()");
+  gen_code("return 0;");
+  gen_code("}", _, true);
+  if(gen.funcs.length > 0){
+    gen.func = gen.funcs.pop();
+    target.id = gen.func.begin;
+    if(target.id < 0){
+      gen_error(text.nofuncbegin);
+      return;
+    }
+    gen.x = data.icons[target.id].x;
+    gen.y = data.icons[target.id].y;
+  }else{
+    gen.run = 0;
+  }
+}
+
