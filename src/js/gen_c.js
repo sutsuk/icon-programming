@@ -364,3 +364,28 @@ function gen_c_funct(){
   gen.x += 1;
 }
 
+function gen_c_funce(){
+  var main;
+  var code = $id("gen-code");
+  console.log("[CALL] gen_c_funce()");
+  gen_code("}", _, true);
+  if(gen.funcs.length > 0){
+    gen.func = gen.funcs.pop();
+    target.id = gen.func.begin;
+    if(target.id < 0){
+      gen_error(text.nofuncbegin);
+      return;
+    }
+    gen.x = data.icons[target.id].x;
+    gen.y = data.icons[target.id].y;
+  }else{
+    main = code.innerHTML.match(/int main(.|\n)*?return 0;\n}\n/);
+    if(typeof main == 'object'){
+      code.innerHTML = code.innerHTML.replace(main[0], "")+"\n"+main[0];
+    }else{
+      gen_error(text.unknown);
+    }
+    gen.run = 0;
+  }
+}
+
