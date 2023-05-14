@@ -68,3 +68,11 @@ function gen_c_double(){
   gen.x += 1;
 }
 
+function gen_c_char(){
+  console.log("[CALL] gen_c_char()");
+  target.name = data.icons[target.icon].attr.name;
+  gen_add_var(target.name, target.type, gen.scope);
+  gen_code("char *"+target.name+";");
+  gen.x += 1;
+}
+
