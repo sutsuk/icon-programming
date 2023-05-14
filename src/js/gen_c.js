@@ -52,3 +52,11 @@ function gen_c_end(){
   }
 }
 
+function gen_c_int(){
+  console.log("[CALL] gen_c_int()");
+  target.name = data.icons[target.icon].attr.name;
+  gen_add_var(target.name, target.type, gen.scope);
+  gen_code("int "+target.name+";");
+  gen.x += 1;
+}
+
