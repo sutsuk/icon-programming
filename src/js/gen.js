@@ -82,3 +82,11 @@ function gen_add_loop(name, begin){
   console.log("[NEWLOOP] "+name+" at icons["+begin+"]")
 }
 
+function gen_add_func(id, name, type){
+  console.log("[CALL] gen_add_func()");
+  data.vars.push(new Var(name, type, "global"));
+  console.log("[NEWVAR] "+type+" "+name+" in "+"global");
+  data.funcs[id].type = type;
+  console.log("[NEWFUNC] "+type+" "+name+"()");
+}
+
