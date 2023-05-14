@@ -267,3 +267,21 @@ function exec_conf(){
   exec.x[exec.nest] += 1;
 }
 
+function exec_subst(){
+  console.log("[CALL] exec_subst()");
+  target.id = exec_search_var(target.attr.name, _, exec.scope[exec.nest]);
+  if(target.id < 0){
+    exec_error(text.wrongscope);
+  }else{
+    target.type = data.vars[target.id].type;
+    if(isNumType(target.type)){
+      if(!isNum(target.attr.val.v1)){
+        exec_error(text.difftype);
+        return;
+      }
+    }
+    data.vars[target.id].value = Cast(target.attr.val.v1, target.type);
+  }
+  exec.x[exec.nest] += 1;
+}
+
