@@ -122,3 +122,16 @@ function exec_search_func(name){
   return -1;
 }
 
+function exec_error(err_msg=""){
+  console.log("[CALL] exec_error()");
+  if(err_msg == ""){
+    msg("["+exec.y[exec.nest]+"]["+exec.x[exec.nest]+"]"+text.unknown);
+    console.log("[ERROR] "+text.unknown);
+  }else{
+    msg("["+exec.y[exec.nest]+"]["+exec.x[exec.nest]+"]"+err_msg);
+    console.log("[ERROR] "+err_msg);
+  }
+  exec.error = 1;
+  exec.run = 0;
+}
+
