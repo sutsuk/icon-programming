@@ -242,3 +242,9 @@ function gen_c_loopbreak(){
   gen.x += 1;
 }
 
+function gen_c_loopend(){
+  console.log("[CALL] gen_c_loopend()");
+  gen_code('}', _, true);
+  gen.x += 1;
+}
+
