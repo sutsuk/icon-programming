@@ -69,3 +69,9 @@ function exec_run(){
   }
 }
 
+function exec_add_var(name, type, scope){
+  console.log("[CALL] exec_add_var()");
+  data.vars.push(new Var(name, type, scope));
+  console.log("[NEWVAR] "+type+" "+name+" in "+scope);
+}
+
